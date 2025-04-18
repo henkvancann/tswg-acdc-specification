@@ -272,8 +272,6 @@ ISO and IEC maintain terminological databases for use in standardization at the 
 
 ~ an optional field map in the Edge section that provides edge weight property that enables directed weighted edges and operators that use weights.
 
-[//]: # (ACDC fields  {#sec:content})
-
 ## ACDC Structure
 
 ### Ordered nested field maps
