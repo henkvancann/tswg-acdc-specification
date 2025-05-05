@@ -1,18 +1,18 @@
 {
-  "name": "spec-up",
-  "version": "-.-.-",
-  "description": "Technical specification drafting tool that generates rich specification documents from markdown.",
-  "main": "./index",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/decentralized-identity/spec-up.git"
+  "name": "tswg-acdc-specification",
+  "version": "2.0.1",
+  "license": "Apache-2.0",
+  "description": "Quick setup for a specification with the Spec-Up-T tool.",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "spec-up-t": "^1.2.1"
   },
   "scripts": {
     "edit": "node -e \"require('spec-up-t')()\"",
     "render": "node --no-warnings -e \"require('spec-up-t/index.js')({ nowatch: true })\"",
     "dev": "node -e \"require('spec-up-t')({ dev: true })\"",
-    "xtrefupdate": "node src/server/xtref-update.js",
-    "xtrefupdateall": "node src/server/xtref-update-all.js",
+    "collectExternalReferencesCache": "node --no-warnings -e \"require('spec-up-t/src/collect-external-references.js').collectExternalReferences({cache: true})\"",
+    "collectExternalReferencesNoCache": "node --no-warnings -e \"require('spec-up-t/src/collect-external-references.js').collectExternalReferences({cache: false})\"",
     "topdf": "node -e \"require('spec-up-t/src/create-pdf.js')\"",
     "freeze": "node -e \"require('spec-up-t/src/freeze.js')\"",
     "references": "node -e \"require('spec-up-t/src/references.js')\"",
@@ -20,26 +20,7 @@
     "menu": "bash ./node_modules/spec-up-t/src/install-from-boilerplate/menu.sh",
     "addremovexrefsource": "node --no-warnings -e \"require('spec-up-t/src/add-remove-xref-source.js')\"",
     "configure": "node --no-warnings -e \"require('spec-up-t/src/configure.js')\"",
-    "postinstall": "node postinstall-message.js",
-    "collectExternalReferencesCache": "node --no-warnings -e \"require('spec-up-t/src/collect-external-references.js').collectExternalReferences({cache: true})\"",
-    "collectExternalReferencesNoCache": "node --no-warnings -e \"require('spec-up-t/src/collect-external-references.js').collectExternalReferences({cache: false})\"",
+    "healthCheck": "node --no-warnings -e \"require('spec-up-t/src/health-check.js')\"",
     "custom-update": "npm update && node -e \"require('spec-up-t/src/install-from-boilerplate/custom-update.js')\""
-  },
-  "keywords": [
-    "spec",
-    "specs",
-    "markdown",
-    "editor",
-    "standards"
-  ],
-  "author": "Daniel Buchner",
-  "license": "Apache 2.0",
-  "bugs": {
-    "url": "https://github.com/decentralized-identity/spec-up/issues"
-  },
-  "homepage": "https://github.com/decentralized-identity/spec-up#readme",
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "spec-up-t": "github:blockchainbird/spec-up-t#fix/xtref"
   }
 }
