@@ -77,16 +77,11 @@ Implementation design of a protocol-based data container specification that enab
 
 ## Normative references
 
-* ISO/IEC 7498-1:1994 Information technology — Open Systems Interconnection — Basic Reference Model: The Basic Model
+[The normative documents](#normative-section) are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.
 
-[a]. IETF RFC-2119 Key words for use in RFCs to Indicate Requirement Levels
-[a]: https://www.rfc-editor.org/rfc/rfc2119.txt
-
-[b]. IETF RFC-4648 Base64 
-[b]: https://www.rfc-editor.org/rfc/rfc4648.txt
-
-[c]. IETF RFC-3339 DateTime 
-[c]: https://www.rfc-editor.org/rfc/rfc3339.txt
+* [ISO/IEC 7498-1](#IT7498):1994 Information technology — Open Systems Interconnection — Basic Reference Model: The Basic Model, including Requirement Levels (IETF [RFC-2119](#RFC2119)).
+  
+See [Bibliography - Normative Section](#normative-section)
 
 
 ## Terms and Definitions
@@ -97,4 +92,3 @@ ISO and IEC maintain terminological databases for use in standardization at the 
 
  - ISO Online browsing platform: available at <https://www.iso.org/obp>
  - IEC Electropedia: available at <http://www.electropedia.org/>
-

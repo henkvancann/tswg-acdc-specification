@@ -95,7 +95,7 @@ A UUID, `u` field, MAY optionally appear in any block (field map) at any level o
 Some fields, such as the `i`, Issuer identifier field, MUST each have an [[ref: AID]] as its value. An AID is a fully qualified Self-certifying Identifier (SCID) that follows the KERI protocol [[2](#KERI)].  An AID MUST be derived from one or more `(public, private)` key pairs using asymmetric or public-key cryptography to create verifiable digital signatures [[52](#DSig)]. Each AID SHOULD have set of one or more Controllers who each control a private key. By virtue of their private key(s), the Controllers MAY make statements on behalf of the associated AID backed by uniquely verifiable commitments via digital signatures on those statements. Any entity then MAY verify those signatures using the associated set of public keys. No shared or trusted relationship between the Controllers and Verifiers is REQUIRED. The verifiable key state for AIDs MUST be established with the KERI protocol [[2](#KERI)]. The use of AIDs enables ACDCs to be used in a portable but securely attributable, fully decentralized manner in an ecosystem that spans trust domains.
 
 ##### Datetime, `dt` Fields
-The datetime, `dt` field value, if any, MUST be the ISO-8601 datetime string with microseconds and UTC offset as per IETF RFC-3339. This datetime is relative to the clock of the issuer. Attributes typically include one or more date time fields. In a given field map (block) the primary datetime will use the label, `dt`. Typically, this is the datetime of the issuance of the ACDC. Other datetime fields MAY include an expiration datetime or the like.
+The datetime, `dt` field value, if any, MUST be the ISO-8601 datetime string with microseconds and UTC offset as per IETF [RFC-3339](#RFC3339). This datetime is relative to the clock of the issuer. Attributes typically include one or more date time fields. In a given field map (block) the primary datetime will use the label, `dt`. Typically, this is the datetime of the issuance of the ACDC. Other datetime fields MAY include an expiration datetime or the like.
 
  An example datetime string in this format is as follows:
 
@@ -215,7 +215,7 @@ The value of any relative URI references for schema as provided by a `$ref` keyw
 
 - The KERI OOBI specification provides a URL syntax that references a SAD resource by its SAID at the service endpoint indicated by that URL [[4](#OOBI)]. Such remote OOBI URLs are also safe because the provided SAD resource is verifiable against the SAID in the OOBI URL. Therefore, OOBI URLs MAY be used as non-local URI references for JSON Schema [[4](#OOBI)] [[15](#ref15)] [[16](#RFC8820)].
 
-- The `did:` URI scheme MAY be used safely to prefix non-local URI references that act to namespace SAIDs expressed as DID URIs or DID URLs.  DID resolvers resolve DID URLs for a given DID method such as  `did:webs` or `did:keri` [[5](#DID-KERI)] [[61](#did-webs)] and may return DID docs or DID doc metadata with SAIDified schema or service endpoints that return SAIDified schema or OOBIs that return SAIDified schema [[15](#ref15)] [[16](#RFC8820)] [[4](#OOBI)]. A verifiable non-local reference in the form of DID URL that includes the schema SAID is resolved safely when it dereferences to the SAD of that SAID. For example, the resolution result returns an ACDC JSON Schema whose id, `$id`, field value is its SAID and returns a resource with JSON Schema mime-type of `schema+json`.
+- The `did:` URI scheme ([W3C DID](#W3C_DID)) MAY be used safely to prefix non-local URI references that act to namespace SAIDs expressed as DID URIs or DID URLs.  DID resolvers resolve DID URLs for a given DID method such as `did:webs` or `did:keri` [[5](#DID-KERI)] [[61](#did-webs)] and may return DID docs or DID doc metadata with SAIDified schema or service endpoints that return SAIDified schema or OOBIs that return SAIDified schema [[15](#ref15)] [[16](#RFC8820)] [[4](#OOBI)]. A verifiable non-local reference in the form of DID URL that includes the schema SAID is resolved safely when it dereferences to the SAD of that SAID. For example, the resolution result returns an ACDC JSON Schema whose id, `$id`, field value is its SAID and returns a resource with JSON Schema mime-type of `schema+json`.
 
 To clarify, ACDCs MUST NOT use complex JSON Schema references which allow dynamically generated Schema resources to be obtained from online JSON Schema Libraries [[41](#ref41)] [[42](#JSchCx)]. The latter approach may be difficult or impossible to secure because a cryptographic commitment to the base Schema that includes complex Schema (non-relative URI-based) references only commits to the non-relative URI reference and not to the actual schema resource, which may change (is dynamic, mutable, malleable). To restate, this approach is insecure because a cryptographic commitment to a complex (non-relative URI-based) reference is not equivalent to a commitment to the detailed associated Schema resource so referenced if it may change.
 
@@ -2028,7 +2028,7 @@ The prior event SAID, `p` field value MUST be the SAID, `d` field value of the i
 
 ##### Datetime, `dt` field
 
-The datetime, `dt` field value MUST be the ISO-8601 datetime string with microseconds and UTC offset as per IETF RFC-3339. This MUST be the datetime of the issuance of the transaction event relative to the clock of the issuer. An example datetime string in this format is as follows:
+The datetime, `dt` field value MUST be the ISO-8601 datetime string with microseconds and UTC offset as per IETF [RFC-3339](#RFC3339). This MUST be the datetime of the issuance of the transaction event relative to the clock of the issuer. An example datetime string in this format is as follows:
 
 `2020-08-22T17:50:09.988921+00:00`
 
@@ -2138,7 +2138,7 @@ In some cases, the Blindable-State-Registry may provide correlatable information
 
 ##### Calculating the SAID of the serialized Blinded Attribute block
 
-As mentioned above, the expanded attributed block is serialized as a concatenation of the CESR serializations of each of its field values. The BLID of such a serialization is computed on the QB64 TEXT domain representation. The BLID computation follows the SAID protocol, adapted for fixed-field representations. First, the size of the BLID field is derived from the type of digest to be used for its computation. For example, the number of characters of a BLAKE3-256 digest in the CESR Text domain is 44 characters. Its slot is replaced with `#` dummy characters, specifically forty-four `#` characters. The Text domain CESR serializations of the remaining fields are appended in order to form the string to be digested. The BLAKE3-256 32-byte raw digest of this dummied full serialization is then computed. This raw digest is serialized in the CESR Text domain (qualified Base64). This serialization is the BLID. Finally, the forty-four dummy characters are replaced with the 44 characters of the BLID. The resultant CESR serialized attribute block.
+As mentioned above, the expanded attributed block is serialized as a concatenation of the CESR serializations of each of its field values. The BLID of such a serialization is computed on the QB64 TEXT domain representation. The BLID computation follows the SAID protocol, adapted for fixed-field representations. First, the size of the BLID field is derived from the type of digest to be used for its computation. For example, the number of characters of a BLAKE3-256 digest in the CESR Text domain is 44 characters. Its slot is replaced with `#` dummy characters, specifically forty-four `#` characters. The Text domain CESR serializations of the remaining fields are appended in order to form the string to be digested. The BLAKE3-256 32-byte raw digest of this dummied full serialization is then computed. This raw digest is serialized in the CESR Text domain (qualified [Base64](#RFC4648)). This serialization is the BLID. Finally, the forty-four dummy characters are replaced with the 44 characters of the BLID. The resultant CESR serialized attribute block.
 
 The BLID is the value BLID `b` field in the associated blindable update `bup` event message.
 
@@ -3342,7 +3342,7 @@ The verkey is used as the raw input to a Verfer (verifier) Class instance (found
 verfer = Verfer(raw=verkey, code=MtrDex.Ed25519)
 ```
 
-From this, the initial signing public verification key in CESR encoded qualified Base64 `Text` domain representation is as follows:
+From this, the initial signing public verification key in CESR encoded qualified [Base64](#RFC4648) `Text` domain representation is as follows:
 
 ```python
 'DA8-J0EW88RMYqtUHQDqT4q2YH2iBFlW8HobHKV74yi_'
@@ -4576,6 +4576,14 @@ The ACDC's schema is as follows:
 <a id="did-webs">61</a><a id="ref71"></a>. ToIP did:webs Method Specification, https://trustoverip.github.io/tswg-did-method-webs-specification/
 
 <a id="RFC4627">9</a><a id="ref9"></a>. RFC4627, The application/json Media Type for JavaScript Object Notation (JSON), D. Crockford; 2006-07. Status: Informational.https://datatracker.ietf.org/doc/rfc4627/
+
+<a id="RFC3339">71</a><a id="ref71"></a>. IETF RFC-3339 Date and Time on the Internet: Timestamps [DateTime](https://www.rfc-editor.org/rfc/rfc3339.txt). G. Klyne. 2002-07. Status: Standards Track
+
+<a id="RFC4648">72</a><a id="ref72"></a>. RFC4648 [The Base16, Base32, and Base64 Data Encodings](https://www.rfc-editor.org/rfc/rfc4648). S. Josefsson; 2006-10. Status: Proposed Standard.
+
+<a id="RFC2119">73</a><a id="ref73"></a>. IETF RFC-2119 [Key words for use in RFCs to Indicate Requirement Levels](https://www.rfc-editor.org/rfc/rfc2119.txt). S. Bradner. 1997-03. Status: Best Current Practice
+
+<a id="IT7498">74</a><a id="ref74"></a>. ISO/IEC 7498-1:1994 Information technology — Open Systems Interconnection — Basic Reference Model: The Basic Model. June 1999. Introduction. Retrieved 26 August 2022.
 
 
 ### Informative section
