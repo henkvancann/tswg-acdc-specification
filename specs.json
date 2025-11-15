@@ -15,7 +15,7 @@
       "source": {
         "host": "github",
         "account": "trustoverip",
-        "repo": "tswg-acdc-specification"
+        "repo": "kswg-acdc-specification"
       },
       "author": "Trust over IP Foundation",
       "description": "Create technical specifications in markdown. Based on the original Spec-Up, extended with Terminology tooling",
