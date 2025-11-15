@@ -725,7 +725,7 @@ In compact form, the value of the selectively disclosable top-level Attribute se
 
 Please note that the zeroth element \[a<sub>0</sub>] is a placeholder for the AGID itself.
 
-Given sufficient collision resistance of the digest Operator, the digest of an ordered concatenation is not subject to a birthday attack on its concatenated elements [[ref: BDC][[ref: BDay][[ref: QCHC][[ref: HCR][[48]].
+Given sufficient collision resistance of the digest Operator, the digest of an ordered concatenation is not subject to a birthday attack on its concatenated elements [[BDC](#BDC) [BDay](#BDay) [QCHC](#QCHC) [HCR](#HCR) [48](#Hash)].
 
 Moreover, the aggregate AGID makes a commitment to each element a<sub>i</sub> for i=1..N SAID. A block's SAID itself makes a blinded commitment to its block's (SAD) attribute value(s) in detail. Because each block is itself blinded by its SAID and UUID, disclosure of any given a<sub>i</sub> SAID does not expose or disclose any discoverable information detail about either its own or another block's Attribute value(s). Therefore, one may safely disclose the full list of a<sub>i</sub> elements without exposing the blinded block Attribute values.
 
@@ -1677,7 +1677,7 @@ This is in contrast to other verifiable credential schemes, where the credential
 The approach of binding ACDC state to Issuer key state via anchored TEL sealsis shown in the following diagram:
 
 
-![Bound-ACDC-State](https://github.com/trustoverip/tswg-acdc-specification/blob/main/spec/assets/RegistryTEL.png?raw=true)
+![Bound-ACDC-State](https://github.com/trustoverip/kswg-acdc-specification/blob/main/spec/assets/RegistryTEL.png?raw=true)
 
 **Figure:** *Registrar Observer Components*
 
@@ -1694,7 +1694,7 @@ The use of a Transaction Event Log (TEL) to manage the state of an ACDC may requ
 
 To elaborate, an Observer starts up by downloading and caching the Registries from a Registrar. The Observer then updates its cache of current Registry state by either periodically polling the Registry for state updates or by subscribing to pushed state updates from the Registrar when available. Typically, because ACDC state changes are rare, optimized batch synchronization of state changes across multiple registries may be employed. Race conditions may be mitigated by implementing timed grace periods on revocations, whereby a revocation does not go into effect until a specified date and time after the state update. This enables synchronization batch windows to catch revocations in advance of PoV requests.
 
-![Registrar-Observers](https://github.com/trustoverip/tswg-acdc-specification/blob/main/spec/assets/RegistrarObserver.png?raw=true)
+![Registrar-Observers](https://github.com/trustoverip/kswg-acdc-specification/blob/main/spec/assets/RegistrarObserver.png?raw=true)
 
 **Figure:** *Registrar Observer Components*
 
@@ -1800,7 +1800,7 @@ The difference between exchange types is the information disclosed, not the mech
 
 The second is convenience. A standard, simple protocol is easier to implement, support, update, understand, and adopt. The tooling is more consistent.
 
-This IPEX [[ref: IPEX]] protocol leverages important features of ACDCs and ancillary protocols such as CESR [[1](#CESR)], SAIDs [[3](#SAID)], and CESR-Path proofs [[ref: Proof-ID]] as well as Ricardian Contracts [[43] and Graduated Disclosure (Metadata, Partial, Selective, Full) to enable Contractually Protected Disclosure. Contractually Protected Disclosure includes both Chain-Link Confidentialand Contingent Disclosure  [[44]] [[ref: ACDC]].
+This IPEX [[xref: kmg-1, IPEX]] protocol leverages important features of ACDCs and ancillary protocols such as CESR [[1](#CESR)], SAIDs [[3](#SAID)], and [[xref: kmg-1, cesr-path, CESR-Path]] proofs ([[xref: kmg-1, Proof-ID]]) as well as Ricardian Contracts [[43] and Graduated Disclosure (Metadata, Partial, Selective, Full) to enable Contractually Protected Disclosure. Contractually Protected Disclosure includes both Chain-Link Confidentialand Contingent Disclosure  [[44]] [[ref: ACDC]].
 
 ### IPEX Protocol Messages
 
@@ -1859,7 +1859,7 @@ Thus, for any disclosed variant of an ACDC, the Disclosee MAY need only verify o
 
 ### Disclosure-specific (Bespoke) Issued ACDCs
 
-Chaining two or more ACDCs via edges enables disclosure-specific issuance of bespoke issued ACDCs. A given Discloser of an ACDC issued by some Issuer might want to augment the disclosure with additional contractual obligations or additional information sourced by the Discloser where those augmentations are specific to a given context, such as a specific Disclosee. A given Discloser issues its own bespoke ACDC referencing some other ACDC via an Edge. This means that the normal validation logic and tooling for a chained ACDC can be applied without complicating the presentation exchange logic. Furthermore, Attributes in other ACDCs pointed to by Edges in the bespoke ACDC MAY be addressed by Attributes in the bespoke ACDC using JSON Pointer or CESR-SAD-Path proof references that are relative to the node SAID in the Edge [[6](#RFC6901)] [[ref: Proof_ID]].
+Chaining two or more ACDCs via edges enables disclosure-specific issuance of bespoke issued ACDCs. A given Discloser of an ACDC issued by some Issuer might want to augment the disclosure with additional contractual obligations or additional information sourced by the Discloser where those augmentations are specific to a given context, such as a specific Disclosee. A given Discloser issues its own bespoke ACDC referencing some other ACDC via an Edge. This means that the normal validation logic and tooling for a chained ACDC can be applied without complicating the presentation exchange logic. Furthermore, Attributes in other ACDCs pointed to by Edges in the bespoke ACDC MAY be addressed by Attributes in the bespoke ACDC using JSON Pointer or [[xref: kmg-1, cesr-sad-path, CESR-SAD-Path]] proof references that are relative to the node SAID in the Edge [[6](#RFC6901)] [[xref: kmg-1, proof-id, Proof-ID]].
 
 For example, this approach enables the bespoke ACDC to identify (name) the Disclosee directly as the Issuee of the bespoke ACDC. This enables contractual legal language in the Rules section of the bespoke ACDC that references the Issuee of that ACDC as a named party. Signing the agreement to the offer of that bespoke ACDC consummates a contract between the named Issuer and the named Issuee. This approach means that custom or bespoke presentations do not need additional complexity or extensions. Extensibility comes from reusing the tooling for issuing ACDCs to issue a bespoke or disclosure-specific ACDC. When the only purpose of the bespoke ACDC is to augment the contractual obligations associated with the disclosure, then the Attribute section, `a`, field value of the bespoke ACDC MAY be empty, or it MAY include properties whose only purpose is to support the bespoke contractual language.
 
@@ -4559,13 +4559,13 @@ The ACDC's schema is as follows:
 
 ### Normative section
 
-<a id="CESR">1</a><a id="ref1"></a>. Composable Event Streaming Representation, CESR, https://github.com/trustoverip/tswg-acdc-specification
+<a id="CESR">1</a><a id="ref1"></a>. Composable Event Streaming Representation, CESR, https://github.com/trustoverip/kswg-acdc-specification
 
-<a id="KERI">2</a><a id="ref2"></a>. Key Event Receipt Infrastructure, KERI, https://github.com/trustoverip/tswg-keri-specification
+<a id="KERI">2</a><a id="ref2"></a>. Key Event Receipt Infrastructure, KERI, https://github.com/trustoverip/kswg-keri-specification
 
-<a id="SAID">3</a><a id="ref3"></a>. Self-Addressing IDentifier, SAID, https://github.com/trustoverip/tswg-cesr-specification
+<a id="SAID">3</a><a id="ref3"></a>. Self-Addressing IDentifier, SAID, https://github.com/trustoverip/kswg-cesr-specification
 
-<a id="OOBI">4</a><a id="ref4"></a>. Out-Of-Band-Introduction, OOBI, https://github.com/trustoverip/tswg-keri-specification
+<a id="OOBI">4</a><a id="ref4"></a>. Out-Of-Band-Introduction, OOBI, https://github.com/trustoverip/kswg-keri-specification
 
 <a id="DID-KERI">5</a><a id="ref5"></a>. DIDK_ID, IETF DID-KERI Internet Draft, https://github.com/WebOfTrust/ietf-did-keri
 

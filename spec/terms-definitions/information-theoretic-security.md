@@ -1,1 +1,1 @@
-[[tref: kmg-1, information-theoretic-security, Information theoretic security]]
+[[tref: kmg-1, information-theoretic-security, Information theoretic security, ITPS]]

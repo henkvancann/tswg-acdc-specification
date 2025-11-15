@@ -1,1 +1,1 @@
-[[tref: kmg-1, autonomic-identifier, Autonomic Identifier]]
+[[tref: kmg-1, autonomic-identifier, Autonomic Identifier, AID]]

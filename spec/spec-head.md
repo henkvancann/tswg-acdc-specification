@@ -5,7 +5,7 @@ Authentic Chained Data Containers (ACDC)
 
 **Latest Draft:**
 
-[https://github.com/trustoverip/tswg-acdc-specification](https://github.com/trustoverip/tswg-acdc-specification)
+[https://github.com/trustoverip/kswg-acdc-specification](https://github.com/trustoverip/kswg-acdc-specification)
 
 **Author:**
 
@@ -22,8 +22,8 @@ Authentic Chained Data Containers (ACDC)
   
 **Participate:**
 
-~ [GitHub repo](https://github.com/trustoverip/tswg-acdc-specification)
-~ [Commit history](https://github.com/trustoverip/tswg-acdc-specification/commits/main)
+~ [GitHub repo](https://github.com/trustoverip/kswg-acdc-specification)
+~ [Commit history](https://github.com/trustoverip/kswg-acdc-specification/commits/main)
 
 
 ## Introduction
@@ -48,7 +48,7 @@ There are several different variants of ACDCs. These enable different types of d
 
 Information about the current status of this document, any errata,
 and how to provide feedback on it, may be obtained at
-[https://github.com/trustoverip/tswg-acdc-specification](https://github.com/trustoverip/tswg-acdc-specification).
+[https://github.com/trustoverip/kswg-acdc-specification](https://github.com/trustoverip/kswg-acdc-specification).
 
 ## Copyright Notice
 
